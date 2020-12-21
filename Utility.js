@@ -47,11 +47,27 @@ class Utility {
         this.emailVerification()
     }
 
+    //verify phone number
+    phoneNumberVerification(){
+        let name = readLineSunc.question("What is your phone number ? : ");
+
+        var patternName = RegExp('[0-9]{2}[ ][0-9]{10}$','gm')
+        var test = patternName.test(name)
+        if( test == true){
+            console.log("Phone number is according to pattern")
+            return 0
+        }
+            
+        console.log("Error in input. Please try again.")
+        this.phoneNumberVerification()        
+    }
+
     //take details input and call corresponding functions
     inputDetails() {
         this.firstNameVerification()
         this.lastNameVerification()
         this.emailVerification()
+        this.phoneNumberVerification()
     }
 
 }
