@@ -1,2 +1,5 @@
-console.log("Welcome to User Registration!")
+console.log("\nWelcome to User Registration!")
 
+let utility = require('./Utility.js')
+
+utility.inputDetails()
