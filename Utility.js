@@ -48,33 +48,47 @@ class Utility {
     }
 
     //verify phone number
-    phoneNumberVerification(){
+    phoneNumberVerification() {
         let name = readLineSunc.question("What is your phone number ? : ");
 
-        var patternPhoneNumber = RegExp('^[0-9]{2}[ ][0-9]{10}$','gm')
+        var patternPhoneNumber = RegExp('^[0-9]{2}[ ][0-9]{10}$', 'gm')
         var test = patternPhoneNumber.test(name)
-        if( test == true){
+        if (test == true) {
             console.log("Phone number is according to pattern")
             return 0
         }
-            
+
         console.log("Error in input. Please try again.")
-        this.phoneNumberVerification()        
+        this.phoneNumberVerification()
     }
 
-     //verify password
-    passwordVerification(){
+    //verify password
+    passwordVerification() {
         let name = readLineSunc.question("What is your password ? : ");
 
         var patternPassword = RegExp('(?=.*[A-Z]{1})(?=.*[0-9]{1}).{8,}')
         var test = patternPassword.test(name)
-        if( test == true){
-            console.log("Password is according to pattern")
-            return 0
-        }
-            
+        if (test == true) {
+
+            var special = "^.,:;!@#$%^&*_+="
+            var flag = 0
+            var i
+            for (i = 0; i < special.length; i++){
+                var parts = name.split(special.charAt(i)).length
+                if (parts == 2)
+                    flag++
+                if(parts == 1 && ( name.charAt(0) == special.charAt(i) || name.charAt(name.length - 1) == special.charAt(i)))
+                    flag++
+
+                if (flag == 1) {
+                    console.log("Password is according to pattern")
+                    return 0
+                }
+            }
+        }      
+
         console.log("Error in input. Please try again.")
-        this.passwordVerification()        
+        this.passwordVerification()
     }
 
     //take details input and call corresponding functions
@@ -83,7 +97,7 @@ class Utility {
         this.lastNameVerification()
         this.emailVerification()
         this.phoneNumberVerification()
-        this.passwordVerification()   
+        this.passwordVerification()
     }
 
 }
