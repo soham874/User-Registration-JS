@@ -66,7 +66,7 @@ class Utility {
     passwordVerification(){
         let name = readLineSunc.question("What is your password ? : ");
 
-        var patternPassword = RegExp('(?=.*[A-Z]{1}).{8,}')
+        var patternPassword = RegExp('(?=.*[A-Z]{1})(?=.*[0-9]{1}).{8,}')
         var test = patternPassword.test(name)
         if( test == true){
             console.log("Password is according to pattern")
